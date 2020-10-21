@@ -1,27 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projeto_ContasAPagar\\BackEnd\\Api_Rest\\Api_Rest\\Api_Rest.csproj": {}
+    "C:\\Projeto_Dev\\RycherPereira_Dev\\BackEnd\\Api_Rest\\Api_Rest\\Api_Rest.csproj": {}
   },
   "projects": {
-    "C:\\Projeto_ContasAPagar\\BackEnd\\Api_Rest\\Api_Rest\\Api_Rest.csproj": {
+    "C:\\Projeto_Dev\\RycherPereira_Dev\\BackEnd\\Api_Rest\\Api_Rest\\Api_Rest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projeto_ContasAPagar\\BackEnd\\Api_Rest\\Api_Rest\\Api_Rest.csproj",
+        "projectUniqueName": "C:\\Projeto_Dev\\RycherPereira_Dev\\BackEnd\\Api_Rest\\Api_Rest\\Api_Rest.csproj",
         "projectName": "Api_Rest",
-        "projectPath": "C:\\Projeto_ContasAPagar\\BackEnd\\Api_Rest\\Api_Rest\\Api_Rest.csproj",
-        "packagesPath": "C:\\Users\\Rycher Pereira\\.nuget\\packages\\",
-        "outputPath": "C:\\Projeto_ContasAPagar\\BackEnd\\Api_Rest\\Api_Rest\\obj\\",
+        "projectPath": "C:\\Projeto_Dev\\RycherPereira_Dev\\BackEnd\\Api_Rest\\Api_Rest\\Api_Rest.csproj",
+        "packagesPath": "C:\\Users\\tp.rycher.pereira\\.nuget\\packages\\",
+        "outputPath": "C:\\Projeto_Dev\\RycherPereira_Dev\\BackEnd\\Api_Rest\\Api_Rest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Rycher Pereira\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tp.rycher.pereira\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,6 +38,10 @@
         "netcoreapp3.1": {
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Analyzers": {
               "target": "Package",
               "version": "[3.1.9, )"
             },
@@ -75,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

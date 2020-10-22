@@ -52,7 +52,8 @@ namespace Api_Rest.Controllers
        [FromBody] ContasAPagar model)
         {
             if (ModelState.IsValid)
-            {
+            {              
+                model.CalculaDiasAtraso();                
                 context.ContasAPagar.Add(model);
                 await context.SaveChangesAsync();
                 return model;

@@ -15,10 +15,9 @@ namespace Api_Rest.Models
         public string Nome { get; set; }
 
         [Required]
-        public decimal ValorOriginal { get; set; }
+        public double ValorOriginal { get; set; }
 
-        [Required]
-        public decimal ValorCorrigido { get; set; }
+        public double ValorCorrigido { get; set; }
 
         [Required]
         public DateTime DtVencimento { get; set; }
@@ -26,6 +25,48 @@ namespace Api_Rest.Models
         [Required]
         public DateTime DtPagamento { get; set; }
 
-       public decimal QtdDiasAtraso { get; set; }
+        public double QtdDiasAtraso { get; set; }
+
+
+
+        public void CalculaDiasAtraso() 
+        {
+           double _qtdDeDias;
+            _qtdDeDias = (DtVencimento - DtPagamento).TotalDays;
+
+            if (_qtdDeDias <= 0)
+            {                
+                _qtdDeDias = _qtdDeDias * -1;
+                QtdDiasAtraso = _qtdDeDias;
+            }
+            else
+            {
+                QtdDiasAtraso = 0;
+            }
+
+            CalculaValorCorrigido();
+        }
+
+        public void CalculaValorCorrigido()
+        {
+            double _valorComMultaAplicada = 0;
+            if (QtdDiasAtraso > 0) {
+                if (QtdDiasAtraso <= 3)
+                {
+                    _valorComMultaAplicada = (ValorOriginal * 0.02 + ValorOriginal);
+                    ValorCorrigido = (_valorComMultaAplicada * 0.001) * QtdDiasAtraso + _valorComMultaAplicada;
+                }
+                else if (QtdDiasAtraso == 4 || QtdDiasAtraso == 5)
+                {
+                    _valorComMultaAplicada = (ValorOriginal * 0.03 + ValorOriginal);                
+                    ValorCorrigido = (_valorComMultaAplicada * 0.002) * QtdDiasAtraso + _valorComMultaAplicada;
+                }
+                else if (QtdDiasAtraso > 5)
+                {
+                    _valorComMultaAplicada = (ValorOriginal * 0.05 + ValorOriginal);
+                    ValorCorrigido = (ValorOriginal * 0.003) * QtdDiasAtraso + _valorComMultaAplicada;                
+                }                
+            }
+        }
     }
 }

@@ -3,18 +3,21 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContasComponent } from './components/contas/contas.component';
+import { ContasAPagarComponent } from './contas-apagar/contas-apagar.component';
+import { ContasService} from './contas.service';
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContasComponent
+    ContasAPagarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ContasService, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

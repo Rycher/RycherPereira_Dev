@@ -1,0 +1,13 @@
+<p>Contas Cadastradas</p>
+
+
+<table *ngFor="let conta of Contas">
+    <tr>
+        <th>  Nome  </th>
+        <th>  Valor Original  </th>
+    </tr>
+    <tr>
+        <td>{{conta.Nome}}</td>
+        <td>{{conta.ValorOriginal}}</td>
+    </tr>
+</table>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContasService } from '../contas.service';
+import { Conta } from './Conta';
 
 @Component({
   selector: 'app-contas-apagar',
@@ -7,22 +8,48 @@ import { ContasService } from '../contas.service';
   styleUrls: ['./contas-apagar.component.scss']
 })
 export class ContasAPagarComponent implements OnInit {
+  
+  rowData: Array<any>;  
+  conta = new Conta();
 
-  Contas: Array<any> = new Array();
+  columnDefs = [
+    { headerName: 'CPF', field: 'cpf' },
+    { headerName: 'Nome', field: 'nome' },
+    { headerName: 'Valor Original', field: 'valorOriginal'},    
+    {
+      headerName: 'Valor Corrigido', field: 'valorCorrigido',
+      cellRenderer: (data) => {
+        return data.value ? (new Number(data.value)).toFixed(2) : '';
+      }
+    },
+    {
+      headerName: 'Data Pagamento', field: 'dtPagamento',
+      cellRenderer: (data) => {
+        return data.value ? (new Date(data.value)).toLocaleDateString() : '';
+      }
+    },
+    { headerName: 'Dias de Atraso', field: 'qtdDiasAtraso' },
+    
+  ];
 
   constructor(private contasService: ContasService) { }
 
-  ngOnInit(): void {
-    this.listarContas();
+  ngOnInit(): void {    
   }
 
-
-  listarContas(){
+  listarContas(){    
     this.contasService.listarContas().subscribe(contas =>{
-      this.Contas = contas;
+      this.rowData = contas;
     }, err =>{
       console.log('erro ao listar as contas!')
-    }
-    );
-  }
+    });
+   }
+
+  addConta() {    
+    this.contasService.addConta(this.conta)
+      .subscribe(data => {
+        console.log(data)
+        this.listarContas();
+      })     
+  }    
 }

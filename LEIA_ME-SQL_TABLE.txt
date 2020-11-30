@@ -1,0 +1,7 @@
+cpf(PK, varchar(30), não nulo)
+dtVencimento(PK, datetime, não nulo)
+dtPagamento(Pk,datetime, não nulo)
+nome(varchar(30), não nulo)
+valorOriginal(float, não nulo)
+ValorCorrigido(float, não nulo)
+qtdDiasAtraso(float, não nulo)

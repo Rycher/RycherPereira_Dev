@@ -10,24 +10,16 @@ namespace Api_Rest.Models
         [Key]
         [Required]
         public string Cpf { get; set; }
-
         [Required]
         public string Nome { get; set; }
-
         [Required]
         public double ValorOriginal { get; set; }
-
         public double ValorCorrigido { get; set; }
-
         [Required]
         public DateTime DtVencimento { get; set; }
-
         [Required]
         public DateTime DtPagamento { get; set; }
-
         public double QtdDiasAtraso { get; set; }
-
-
 
         public void CalculaDiasAtraso() 
         {
@@ -43,27 +35,35 @@ namespace Api_Rest.Models
             {
                 QtdDiasAtraso = 0;
             }
-
-            CalculaValorCorrigido();
+            BuscaValorCorrigido();
         }
 
-        public void CalculaValorCorrigido()
+        public void BuscaValorCorrigido()
         {
             double _valorComMultaAplicada = 0;
             if (QtdDiasAtraso > 0) {
                 if (QtdDiasAtraso <= 3)
                 {
+                     //Valor Com Multa Aplicada
                     _valorComMultaAplicada = (ValorOriginal * 0.02 + ValorOriginal);
+
+                    //Valor Com Multa Aplicada + Juros por dia de atraso
                     ValorCorrigido = (_valorComMultaAplicada * 0.001) * QtdDiasAtraso + _valorComMultaAplicada;
                 }
                 else if (QtdDiasAtraso == 4 || QtdDiasAtraso == 5)
                 {
-                    _valorComMultaAplicada = (ValorOriginal * 0.03 + ValorOriginal);                
+                    //Valor Com Multa Aplicada
+                    _valorComMultaAplicada = (ValorOriginal * 0.03 + ValorOriginal);
+
+                    //Valor Com Multa Aplicada + Juros por dia de atraso
                     ValorCorrigido = (_valorComMultaAplicada * 0.002) * QtdDiasAtraso + _valorComMultaAplicada;
                 }
                 else if (QtdDiasAtraso > 5)
                 {
+                    //Valor Com Multa Aplicada
                     _valorComMultaAplicada = (ValorOriginal * 0.05 + ValorOriginal);
+
+                    //Valor Com Multa Aplicada + Juros por dia de atraso
                     ValorCorrigido = (ValorOriginal * 0.003) * QtdDiasAtraso + _valorComMultaAplicada;                
                 }                
             }

@@ -1,13 +1,38 @@
-<p>Contas Cadastradas</p>
+<div>    
+    <p style="width: 100%;text-align: center;">Contas Cadastradas</p>   
+      
 
+    <div class="div-cad">
+        <form id="form-cad">
+        <label for="fname">CPF </label>
+        <input id="cpf" name="cpf" type="text" [(ngModel)]="conta.cpf" placeholder="CPF">
+    
+        <label for="lname">Nome</label>
+        <input [(ngModel)]="conta.nome" type="text" id="nome" name="nome" placeholder="Nome">
 
-<table *ngFor="let conta of Contas">
-    <tr>
-        <th>  Nome  </th>
-        <th>  Valor Original  </th>
-    </tr>
-    <tr>
-        <td>{{conta.Nome}}</td>
-        <td>{{conta.ValorOriginal}}</td>
-    </tr>
-</table>
+        <label for="lname">Valor</label>
+        <input [(ngModel)]="conta.valorOriginal" type="number" id="valorOriginal" name="valorOriginal" placeholder="Valor">    
+        
+        <label for="lname">Data Pagamento</label>                
+        <input ng-bind="date | date:'yyyy-MM-dd HH:mm:ss Z'" [(ngModel)]="conta.dtPagamento" type="date" id="dtPagamento" name="dtPagamento" placeholder="Data Pagamento">            
+
+        <label for="lname">Data Vencimento</label>        
+        <input ng-bind="date | date:'yyyy-MM-dd HH:mm:ss Z'" [(ngModel)]="conta.dtVencimento" type="date" id="dtVencimento" name="dtVencimento" placeholder="Data Vencimento">        
+        
+
+        </form>
+        <button class="button" (click)="addConta()">Salvar</button>      
+    </div>
+
+    <div class="div-grid">    
+        <ag-grid-angular
+            id="teste"
+            style="width: 85%; height: 300px;margin-bottom: 20px;"
+            class="ag-theme-alpine"
+            [rowData]="rowData"
+            [columnDefs]="columnDefs">
+        </ag-grid-angular>
+
+        <button style="margin-bottom: 100px;" class="button" (click)="listarContas()">Buscar</button>      
+    </div>
+</div>

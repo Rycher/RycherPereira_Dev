@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './App.css';
 import ListItem from './components/ListItem'
 import NewTaskInput from './components/NewTaskInput'
 
